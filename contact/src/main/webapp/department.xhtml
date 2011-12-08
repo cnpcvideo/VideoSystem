@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   
+   <ui:define name="register_domain">
+
+      <h:form id="department_create">
+         <h2>Department</h2>
+         <p>Please input your Department information.</p>
+         <table>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="departname" value="Depart Name:" /></th>
+               <td><h:inputText id="departname" value="#{departmentBean.name}" />
+                  <h:message for="departname" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="company_name" value="Company Name:" /></th>
+               <td><h:inputText id="company_name"
+                     value="#{departmentBean.company_name}" /> <h:message
+                     for="company_name" errorClass="invalid" /></td>
+            </tr>
+            
+         </table>
+         <p>
+            <h:commandButton id="CreateDepartment"
+               action="#{departmentBean.addDepartment}" value="Create" />
+            <h:outputText value=" Create success!"
+               rendered="#{facesContext.postback and empty facesContext.messageList}"
+               style="color: green;" />
+         </p>
+      </h:form>
+      
+   </ui:define>
+   
+   <ui:define name="display_domain">
+   	<h2>Departments</h2>
+      <h:panelGroup rendered="#{empty departmentBean.departmentList}">
+         <em>No department.</em>
+      </h:panelGroup>
+      <h:dataTable var="_department" value="#{departmentBean.departmentList}"
+         rendered="#{not empty departmentBean.departmentList}">
+         <h:column>
+            <f:facet name="header">id</f:facet>
+                #{_department.departID}
+            </h:column>
+         <h:column>
+            <f:facet name="header">name</f:facet>
+                #{_department.departName}
+            </h:column>
+         <h:column>
+            <f:facet name="header">Company</f:facet>
+                #{_department.company.companyName}
+            </h:column>
+        
+         <f:facet name="footer">
+                List all departments!
+                <a target="_parent" href="company.xhtml"><br/>
+      				companies</a>
+      			<a target="_parent" href="staff.xhtml"><br/>
+      				staffs</a>
+         </f:facet>
+      </h:dataTable>
+	  <br/>
+	  display
+   </ui:define>
+</ui:composition>

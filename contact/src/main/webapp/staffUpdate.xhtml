@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   
+   <ui:define name="register_domain">
+
+      <h:form id="staff_update">
+         <h2>Staff</h2>
+         <p>Please update your staff information.</p>
+         <table>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="staffname" value="Staff Name:" /></th>
+               <td><h:inputText id="staffname" value="#{staffBean.name}" />
+                  <h:message for="staffname" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="position" value="Position:" /></th>
+               <td><h:inputText id="position"
+                     value="#{staffBean.position}" /> <h:message
+                     for="position" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="tell" value="Tell:" /></th>
+               <td><h:inputText id="tell"
+                     value="#{staffBean.tell}" /> <h:message
+                     for="tell" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="email" value="Email:" /></th>
+               <td><h:inputText id="email"
+                     value="#{staffBean.email}" /> <h:message
+                     for="email" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="company_name" value="Company Name:" /></th>
+               <td><h:inputText id="company_name"
+                     value="#{staffBean.company_name}" /> <h:message
+                     for="company_name" errorClass="invalid" /></td>
+            </tr>
+            
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="department_name" value="Depart Name:" /></th>
+               <td><h:inputText id="department_name"
+                     value="#{staffBean.department_name}" /> <h:message
+                     for="department_name" errorClass="invalid" /></td>
+            </tr>
+         </table>
+         <p>
+            <h:commandButton id="CreateStaff"
+               action="#{staffBean.addStaff}" value="Create" />
+            <h:outputText value=" Create success!"
+               rendered="#{facesContext.postback and empty facesContext.messageList}"
+               style="color: green;" />
+         </p>
+      </h:form>
+   </ui:define>
+   
+</ui:composition>
