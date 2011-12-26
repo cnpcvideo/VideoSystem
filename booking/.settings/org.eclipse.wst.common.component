@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+  <wb-module deploy-name="seam-booking">
+    <property name="context-root" value="seam-booking"/>
+    <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+    <wb-resource deploy-path="/" source-path="src/main/resources-jbossas7"/>
+    <property name="java-output-path" value="/target/classes"/>
+    <dependent-module archiveName="commons-beanutils-1.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-beanutils/commons-beanutils/1.8.0/commons-beanutils-1.8.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-digester-2.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-digester/commons-digester/2.1/commons-digester-2.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="commons-logging-1.1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="jboss-servlet-api_3.0_spec-1.0.0.Final.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/servlet/jboss-servlet-api_3.0_spec/1.0.0.Final/jboss-servlet-api_3.0_spec-1.0.0.Final.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="joda-time-1.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/joda-time/joda-time/1.6/joda-time-1.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="log4j-1.2.16.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/log4j/log4j/1.2.16/log4j-1.2.16.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="ocpsoft-pretty-time-1.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/ocpsoft/ocpsoft-pretty-time/1.0.6/ocpsoft-pretty-time-1.0.6.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="picketlink-idm-api-1.5.0.Alpha02.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/picketlink/idm/picketlink-idm-api/1.5.0.Alpha02/picketlink-idm-api-1.5.0.Alpha02.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="picketlink-idm-common-1.5.0.Alpha02.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/picketlink/idm/picketlink-idm-common/1.5.0.Alpha02/picketlink-idm-common-1.5.0.Alpha02.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="picketlink-idm-core-1.5.0.Alpha02.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/picketlink/idm/picketlink-idm-core/1.5.0.Alpha02/picketlink-idm-core-1.5.0.Alpha02.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="picketlink-idm-spi-1.5.0.Alpha02.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/picketlink/idm/picketlink-idm-spi/1.5.0.Alpha02/picketlink-idm-spi-1.5.0.Alpha02.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="prettyfaces-jsf2-3.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/com/ocpsoft/prettyfaces-jsf2/3.2.0/prettyfaces-jsf2-3.2.0.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-faces-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/faces/seam-faces/3.1.0.CR1/seam-faces-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-faces-api-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/faces/seam-faces-api/3.1.0.CR1/seam-faces-api-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-international-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/international/seam-international/3.1.0.CR1/seam-international-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-international-api-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/international/seam-international-api/3.1.0.CR1/seam-international-api-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-persistence-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/persistence/seam-persistence/3.1.0.CR1/seam-persistence-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-persistence-api-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/persistence/seam-persistence-api/3.1.0.CR1/seam-persistence-api-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-security-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/security/seam-security/3.1.0.CR1/seam-security-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-security-api-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/security/seam-security-api/3.1.0.CR1/seam-security-api-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-transaction-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/transaction/seam-transaction/3.1.0.CR1/seam-transaction-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="seam-transaction-api-3.1.0.CR1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/seam/transaction/seam-transaction-api/3.1.0.CR1/seam-transaction-api-3.1.0.CR1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="slf4j-api-1.6.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-api/1.6.1/slf4j-api-1.6.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="slf4j-simple-1.6.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/slf4j/slf4j-simple/1.6.1/slf4j-simple-1.6.1.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="solder-api-3.1.0.Beta5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/solder/solder-api/3.1.0.Beta5/solder-api-3.1.0.Beta5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="solder-impl-3.1.0.Beta5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/solder/solder-impl/3.1.0.Beta5/solder-impl-3.1.0.Beta5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <dependent-module archiveName="solder-logging-3.1.0.Beta5.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/var/M2_REPO/org/jboss/solder/solder-logging/3.1.0.Beta5/solder-logging-3.1.0.Beta5.jar">
+      <dependency-type>uses</dependency-type>
+    </dependent-module>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+  </wb-module>
+</project-modules>
