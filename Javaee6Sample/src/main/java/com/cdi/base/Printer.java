@@ -8,7 +8,8 @@ import javax.inject.Named;
 @Named
 @RequestScoped
 public class Printer {
-	@Inject @Informal Greeting greeting;
+	@Inject Greeting greeting;
+//	@Inject @Informal Greeting greeting;
 	
 	private String name;
 	private String salutation;

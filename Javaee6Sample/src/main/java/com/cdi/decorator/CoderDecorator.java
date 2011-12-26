@@ -16,7 +16,6 @@ public abstract class CoderDecorator implements Coder {
 
 	public String codeString(String s, int tval) {
 		int len = s.length();
-		return "\"" + s + "\" becomes " + "\"" + coder.codeString(s, tval)
-				+ "\", " + len + " characters in length";
+		return "In decorator and " + coder.codeString(s, tval);
 	}
 }

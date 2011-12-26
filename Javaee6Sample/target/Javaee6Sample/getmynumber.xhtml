@@ -13,14 +13,14 @@
 			<div style="color: black; font-size: 24px;">
 				<p>
 					I’m thinking of a number between <span style="color: blue">#{userNumberBean.minimum}</span>
-					and <span style="color: blue">#{userNumberBean.maxnimum}</span>. You
-					have <span style="color: blue">#{userNumberBean.remainingGuesses}</span>
+					and <span style="color: blue">#{userNumberBean.maxnimum}</span>.
+					You have <span style="color: blue">#{userNumberBean.remainingGuesses}</span>
 					guesses.
 				</p>
 			</div>
 			<h:panelGrid border="0" columns="5" style="font-size: 18px;">
-Number:
-<h:inputText id="inputGuess" value="#{userNumberBean.userNumber}"
+			Number:
+				<h:inputText id="inputGuess" value="#{userNumberBean.userNumber}"
 					required="true" size="3"
 					disabled="#{userNumberBean.number eq userNumberBean.userNumber}"
 					validator="#{userNumberBean.validateNumberRange}">
