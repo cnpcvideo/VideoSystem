@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   
+   <ui:define name="register_domain">
+
+      <h:form id="staff_create">
+         <h2>Staff</h2>
+         <p>Please input your staff information.</p>
+         <table>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="staffname" value="Staff Name:" /></th>
+               <td><h:inputText id="staffname" value="#{staffBean.name}" />
+                  <h:message for="staffname" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="position" value="Position:" /></th>
+               <td><h:inputText id="position"
+                     value="#{staffBean.position}" /> <h:message
+                     for="position" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="tell" value="Tell:" /></th>
+               <td><h:inputText id="tell"
+                     value="#{staffBean.tell}" /> <h:message
+                     for="tell" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="email" value="Email:" /></th>
+               <td><h:inputText id="email"
+                     value="#{staffBean.email}" /> <h:message
+                     for="email" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="company_name" value="Company Name:" /></th>
+               <td><h:inputText id="company_name"
+                     value="#{staffBean.company_name}" /> <h:message
+                     for="company_name" errorClass="invalid" /></td>
+            </tr>
+            
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="department_name" value="Depart Name:" /></th>
+               <td><h:inputText id="department_name"
+                     value="#{staffBean.department_name}" /> <h:message
+                     for="department_name" errorClass="invalid" /></td>
+            </tr>
+         </table>
+         <p>
+            <h:commandButton id="CreateStaff"
+               action="#{staffBean.addStaff}" value="Create" />
+            <h:outputText value=" Create success!"
+               rendered="#{facesContext.postback and empty facesContext.messageList}"
+               style="color: green;" />
+         </p>
+      </h:form>
+      
+   </ui:define>
+   
+   <ui:define name="display_domain">
+   <h:form id="staff_update">
+   	<h2>Staffs</h2>
+      <h:panelGroup rendered="#{empty staffBean.staffList}">
+         <em>No staffs.</em>
+      </h:panelGroup>
+      <h:dataTable var="_staff" value="#{staffBean.staffList}"
+         rendered="#{not empty staffBean.staffList}" border="2">
+         <h:column>
+            <f:facet name="header">id</f:facet>  
+            <h:inputText id="dt_staffid"
+                     value="#{_staff.staffID}" />	
+            </h:column>
+         <h:column>
+            <f:facet name="header">name</f:facet>
+            <h:inputText id="dt_staffname"
+                     value="#{_staff.staffName}" />   
+            </h:column>
+         <h:column>
+            <f:facet name="header">position</f:facet>
+            <h:inputText id="dt_staffposition"
+                     value="#{_staff.staffPosition}" />    
+            </h:column>
+         <h:column>
+            <f:facet name="header">tell</f:facet>
+            <h:inputText id="dt_staffTell"
+                     value="#{_staff.staffTell}" />   
+            </h:column>
+         <h:column>
+            <f:facet name="header">email</f:facet>
+            <h:inputText id="dt_staffEmail"
+                     value="#{_staff.staffEmail}" />    
+            </h:column>
+         <h:column>
+            <f:facet name="header">Company</f:facet>
+            <h:inputText id="dt_staffcompanyName"
+                     value="#{_staff.company.companyName}" />    
+            </h:column>
+         <h:column>
+            <f:facet name="header">Department</f:facet>
+            <h:inputText id="dt_staffDepartName"
+                     value="#{_staff.department.departName}" />
+            </h:column>
+         <h:column>
+            <f:facet name="header">update</f:facet>
+                <h:commandLink value="Update" actionListener="#{staffBean.updateStaffEvent}" action="staff">
+               		<f:param name="updateID" value="#{_staff.staffID}" />
+               		<f:param name="updateName" value="#{_staff.staffName}" />
+               		<f:param name="updatePosition" value="#{_staff.staffPosition}" />
+               		<f:param name="updateTell" value="#{_staff.staffTell}" />
+               		<f:param name="updateEmail" value="#{_staff.staffEmail}" />
+               		<f:param name="updateCompanyName" value="#{_staff.company.companyName}" />
+               		<f:param name="updateDepartName" value="#{_staff.department.departName}" />
+                </h:commandLink>
+            </h:column>
+         <h:column>
+            <f:facet name="header">delete</f:facet>
+                <h:commandButton id="delete"
+               		action="#{staffBean.deleteStaff(_staff.staffID)}" value="Delete" />
+            </h:column>
+        
+         <f:facet name="footer">
+                List all staffs!
+                <a target="_parent" href="company.xhtml"><br/>
+      				companies</a>
+      			<a target="_parent" href="department.xhtml"><br/>
+      				departments</a>
+         </f:facet>
+      </h:dataTable>
+      </h:form>
+	  <br/>
+	  display
+   </ui:define>
+</ui:composition>

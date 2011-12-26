@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+   xmlns:ui="http://java.sun.com/jsf/facelets"
+   xmlns:f="http://java.sun.com/jsf/core"
+   xmlns:h="http://java.sun.com/jsf/html"
+   template="/WEB-INF/templates/template.xhtml">
+   
+   <ui:define name="register_domain">
+
+      <h:form id="company_create">
+         <h2>Company</h2>
+         <p>Please input your Company information.</p>
+         <table>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="compname" value="Company Name:" /></th>
+               <td><h:inputText id="compname" value="#{companyBean.name}" />
+                  <h:message for="compname" errorClass="invalid" /></td>
+            </tr>
+            <tr>
+               <th style="text-align: right;"><h:outputLabel
+                     for="compabbre" value="Abbre:" /></th>
+               <td><h:inputText id="compabbre"
+                     value="#{companyBean.abbre}" /> <h:message
+                     for="compabbre" errorClass="invalid" /></td>
+            </tr>
+            
+         </table>
+         <p>
+            <h:commandButton id="CreateCompany"
+               action="#{companyBean.addCompany}" value="CreateCompany" />
+            <h:outputText value=" Create success!"
+               rendered="#{facesContext.postback and empty facesContext.messageList}"
+               style="color: green;" />
+         </p>
+      </h:form>
+      
+   </ui:define>
+   
+   <ui:define name="display_domain">
+   	<h2>Companys</h2>
+      <h:panelGroup rendered="#{empty companyBean.companyList}">
+         <em>No Company.</em>
+      </h:panelGroup>
+      <h:dataTable var="_company" value="#{companyBean.companyList}"
+         rendered="#{not empty companyBean.companyList}">
+         <h:column>
+            <f:facet name="header">id</f:facet>
+                #{_company.companyID}
+            </h:column>
+         <h:column>
+            <f:facet name="header">name</f:facet>
+                #{_company.companyName}
+            </h:column>
+         <h:column>
+            <f:facet name="header">abbre</f:facet>
+                #{_company.companyAbbre}
+            </h:column>
+        
+         <f:facet name="footer">
+                List all Companys!
+                <a target="_parent" href="department.xhtml"><br/>
+      				departments</a>
+      			<a target="_parent" href="staff.xhtml"><br/>
+      				staffs</a>
+         </f:facet>
+      </h:dataTable>
+	  <br/>
+	  display
+   </ui:define>
+</ui:composition>

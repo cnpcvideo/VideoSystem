@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:f="http://java.sun.com/jsf/core"
+    xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>String Encoder</title>
+	<link href="resources/css/default.css" rel="stylesheet" type="text/css" />
+</h:head>
+<h:body>
+	<h2>String Encoder</h2>
+	<p>Select Test or Shift, type a string and an integer, then click
+		Encode.</p>
+	<p>If you select Test, the TestCoderImpl bean will display the
+		argument values.</p>
+	<p>If you select Shift, the CoderImpl bean will return a string
+		that shifts the letters in the original string by the value you
+		specify. The value must be between 0 and 26.</p>
+	<h:form id="encodeit">
+		<!-- <h:selectOneRadio id="coderType" required="true"
+			value="#{coderPBean.coderType}">
+			<f:selectItem itemValue="1" itemLabel="Test" />
+			<f:selectItem itemValue="2" itemLabel="Shift Letters" />
+		</h:selectOneRadio> -->
+		<h:outputLabel value = "Type a codeType: " for="codeType"/>
+		<h:inputText id="codeType" value="#{coderPBean.coderType}"/>
+		<p>
+			<h:outputLabel value="Type a string: " for="inputString" />
+			<h:inputText id="inputString" value="#{coderPBean.inputString}" />
+			<h:outputLabel value="Type the number of letters to shift by: "
+				for="transVal" />
+			<h:inputText id="transVal" value="#{coderPBean.transVal}" />
+		</p>
+		<p>
+			<h:commandButton value="Encode" action="#{coderPBean.encodeString}" />
+		</p>
+		<p>
+			<h:outputLabel value="Result: " for="outputString" />
+			<h:outputText id="outputString" value="#{coderPBean.codedString}"
+				style="color:blue" />
+		</p>
+		<p>
+			<h:commandButton value="Reset" action="#{coderPBean.reset}" />
+		</p>
+	</h:form>
+</h:body>
+</html>
