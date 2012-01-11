@@ -1,12 +1,20 @@
 package org.cnpc.system.client.shared;
 
+import java.io.Serializable;
+
 import org.jboss.errai.bus.server.annotations.ExposeEntity;
 
 /**
  * Generated.
  */
 @ExposeEntity
-public class MessageEvent {
+public class MessageEvent implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
     private int id;
     private String message;
 

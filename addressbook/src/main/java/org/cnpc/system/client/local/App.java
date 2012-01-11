@@ -15,6 +15,8 @@
  */
 package org.cnpc.system.client.local;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
@@ -45,7 +47,8 @@ public class App {
 
     @PostConstruct
     public void buildUI() {
-        final Button button = new Button("Send");
+        final Button button = new Button();
+        button.setText("发送");
         final TextBox message = new TextBox();
 
         button.addClickHandler(new ClickHandler() {
@@ -63,6 +66,13 @@ public class App {
     }
 
     public void response(@Observes ResponseEvent event) {
-        responseLabel.setText("Message from Server: " + event.getMessage().toUpperCase());
+    	String messageString = "";
+		try {
+			messageString = new String(event.getMessage().getBytes("iso8859-1"),"utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+    	System.out.println("Message from Server: " + messageString);
+        responseLabel.setText("Message from Server: " + messageString);
     }
 }
