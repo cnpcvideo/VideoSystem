@@ -1,25 +1,20 @@
 package org.cnpc.system.model;
 
 
-import javax.persistence.Entity;
-import java.io.Serializable;
+import java.sql.Date;
 
+import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Column;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
-import javax.persistence.Version;
-import java.sql.Date;
 import javax.persistence.ManyToOne;
-
-import org.cnpc.system.model.ContactMechanismPurpose;
-import org.cnpc.system.model.PartyRole;
+import javax.persistence.Version;
 
 
 @Entity

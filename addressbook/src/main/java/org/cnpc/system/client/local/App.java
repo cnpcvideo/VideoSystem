@@ -72,7 +72,7 @@ public class App {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-    	System.out.println("Message from Server: " + messageString);
+    	//System.out.println("Message from Server: " + messageString);
         responseLabel.setText("Message from Server: " + messageString);
     }
 }

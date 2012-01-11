@@ -1,13 +1,13 @@
 package org.cnpc.system.model;
 
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import java.io.Serializable;
-import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Column;
-import javax.persistence.Version;@Entity public class ContactMechanismPurpose implements java.io.Serializable {
+import javax.persistence.Id;
+import javax.persistence.Version;
+@Entity public class ContactMechanismPurpose implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
