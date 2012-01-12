@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.Version;
 @Entity 
-public class StatusType implements java.io.Serializable {
+public class StatusType implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id

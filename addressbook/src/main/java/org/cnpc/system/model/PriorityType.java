@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Column;
-import javax.persistence.Version;@Entity public class PriorityType implements java.io.Serializable {
+import javax.persistence.Version;@Entity public class PriorityType implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id

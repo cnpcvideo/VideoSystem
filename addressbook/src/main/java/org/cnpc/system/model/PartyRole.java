@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
@@ -41,6 +42,7 @@ import javax.persistence.Version;
 	}
 
 	@ManyToOne
+	@JoinColumn(name="roletype_id")
 	private RoleType roleType = new RoleType();
 
 	public RoleType getRoleType() {
