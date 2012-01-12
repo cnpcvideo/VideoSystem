@@ -20,7 +20,6 @@ import java.io.UnsupportedEncodingException;
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
-import javax.enterprise.inject.New;
 import javax.inject.Inject;
 
 import org.jboss.errai.ioc.client.api.EntryPoint;
@@ -30,13 +29,11 @@ import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Grid;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-import org.cnpc.system.client.shared.MessageEvent;
 import org.cnpc.system.client.shared.PersonVo;
 import org.cnpc.system.client.shared.ResponseEvent;
 
@@ -101,11 +98,7 @@ public class App {
 
     public void response(@Observes ResponseEvent event) {
     	String messageString = "";
-		try {
-			messageString = new String(event.getMessage().getBytes("iso8859-1"),"utf-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
+		messageString = event.getMessage();
         responseLabel.setText("Message from Server: " + messageString);
     }
 }
