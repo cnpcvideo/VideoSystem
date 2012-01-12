@@ -49,18 +49,25 @@ public class App {
     
     private final Label responseLabel = new Label();
 
+    private FlexTable flexTable;
+    private TextBox textNameBox;
+    private TextBox textSexBox;
+    private Label tipLabel;
+    private Grid grid;
+    private Button addContractButton;
+    
+    
     @PostConstruct
     public void buildUI() {
     	
-    	final FlexTable flexTable = new FlexTable();
-        final TextBox textNameBox = new TextBox();
-        final TextBox textSexBox = new TextBox();
-        final Label tipLabel = new Label("请输入联系人信息："); 
-        final Grid grid = new Grid(4, 3);
-        final Button addContractButton = new Button("增加联系人");
-        
-        flexTable.setText(0, 0, "姓名");
-        flexTable.setText(0, 1, "性别");
+    	flexTable = new FlexTable();
+        textNameBox = new TextBox();
+        textSexBox = new TextBox();
+        tipLabel = new Label("请输入联系人信息："); 
+        grid = new Grid(4, 3);
+        addContractButton = new Button("增加联系人");
+        flexTable.setText(0, 0, "姓");
+        flexTable.setText(0, 1, "名");
         flexTable.setText(0, 2, "ID");
         flexTable.setText(0, 3, "电话");
         flexTable.setText(0, 4, "删除");
@@ -88,8 +95,18 @@ public class App {
         addContractButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
+//				addPerson();
+//				personVo.setFirstName(textNameBox.getText());
+//				personVo.setSecondName(textSexBox.getText());
 				personVo.setFirstName(textNameBox.getText());
-				personVo.setSecondName(textSexBox.getText());
+		    	personVo.setSecondName(textSexBox.getText());
+		    	int row = flexTable.getRowCount();
+		    	flexTable.setText(row, 0, textNameBox.getText());
+		    	flexTable.setText(row, 1, textSexBox.getText());
+		    	flexTable.setText(row, 2, "000X");
+		    	flexTable.setText(row, 3, "134*********");
+		    	Button deleteButton = new Button("X");
+		    	flexTable.setWidget(row, 4, deleteButton);
 				personEvent.fire(personVo);
 			}
 		}); 
@@ -98,5 +115,17 @@ public class App {
 
     public void response(@Observes ResponseEvent event) {
         responseLabel.setText("Message from Server: " + event.getMessage());
+    }
+    
+    private void addPerson() {
+//    	personVo.setFirstName(textNameBox.getText());
+//    	personVo.setSecondName(textSexBox.getText());
+//    	int row = flexTable.getRowCount();
+//    	flexTable.setText(row, 0, textNameBox.getText());
+//    	flexTable.setText(row, 1, textSexBox.getText());
+//    	flexTable.setText(row, 2, "000X");
+//    	flexTable.setText(row, 3, "134*********");
+//    	Button deleteButton = new Button("X");
+//    	flexTable.setWidget(row, 4, deleteButton);
     }
 }
