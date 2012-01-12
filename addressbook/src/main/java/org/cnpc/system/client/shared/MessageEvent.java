@@ -18,7 +18,44 @@ public class MessageEvent implements Serializable{
     private int id;
     private String message;
 
-    public MessageEvent() {
+    private String firstName;
+    private String secondName;
+    private String birthDate;
+    private String gentle;
+    
+    public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getSecondName() {
+		return secondName;
+	}
+
+	public void setSecondName(String secondName) {
+		this.secondName = secondName;
+	}
+
+	public String getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(String birthDate) {
+		this.birthDate = birthDate;
+	}
+
+	public String getGentle() {
+		return gentle;
+	}
+
+	public void setGentle(String gentle) {
+		this.gentle = gentle;
+	}
+
+	public MessageEvent() {
     }
 
     public MessageEvent(String message) {

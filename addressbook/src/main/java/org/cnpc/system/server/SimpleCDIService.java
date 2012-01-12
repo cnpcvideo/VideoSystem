@@ -15,8 +15,12 @@
  */
 package org.cnpc.system.server;
 
-import org.cnpc.system.client.shared.MessageEvent;
+import java.io.UnsupportedEncodingException;
+
+import org.cnpc.system.client.shared.PersonVo;
 import org.cnpc.system.client.shared.ResponseEvent;
+import org.cnpc.system.dao.PersonDAO;
+import org.cnpc.system.model.Person;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
@@ -30,9 +34,18 @@ import javax.inject.Inject;
 public class SimpleCDIService {
     @Inject
     private Event<ResponseEvent> responseEvent;
-
-    public void handleMessage(@Observes MessageEvent event) {
-        System.out.println("Received Message from Client: " + event.getMessage());
-        responseEvent.fire(new ResponseEvent(event.getMessage() + " @ timemillis: " + System.currentTimeMillis()));
+    @Inject
+    private PersonDAO personDAO;
+    
+    public void addPersonHandler(@Observes PersonVo personVo) throws UnsupportedEncodingException {
+    	Person person = new Person();
+    	String firstNameString = new String(personVo.getFirstName().getBytes("iso8859-1"),"utf-8");
+    	String secondNameString = new String(personVo.getSecondName().getBytes("iso8859-1"),"utf-8");
+    	person.setCurrentFirstName(firstNameString);
+    	person.setCurrentLastName(secondNameString);
+    	System.out.println("Received Message from Client: " + personVo.getFirstName());
+    	personDAO.savePerson(person);
+        
+        responseEvent.fire(new ResponseEvent(personVo.getFirstName() + " @ timemillis: " + System.currentTimeMillis()));
     }
 }

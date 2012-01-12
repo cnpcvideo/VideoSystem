@@ -20,6 +20,7 @@ import java.io.UnsupportedEncodingException;
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
+import javax.enterprise.inject.New;
 import javax.inject.Inject;
 
 import org.jboss.errai.ioc.client.api.EntryPoint;
@@ -27,12 +28,16 @@ import org.jboss.errai.ioc.client.api.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.FlexTable;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
+import com.google.gwt.user.client.ui.VerticalPanel;
 
 import org.cnpc.system.client.shared.MessageEvent;
+import org.cnpc.system.client.shared.PersonVo;
 import org.cnpc.system.client.shared.ResponseEvent;
 
 /**
@@ -41,28 +46,57 @@ import org.cnpc.system.client.shared.ResponseEvent;
 @EntryPoint
 public class App {
     @Inject
-    private Event<MessageEvent> messageEvent;
-
+    private Event<PersonVo> personEvent;
+    
+    private PersonVo personVo = new PersonVo();
+    
     private final Label responseLabel = new Label();
 
     @PostConstruct
     public void buildUI() {
-        final Button button = new Button();
-        button.setText("发送");
-        final TextBox message = new TextBox();
+    	
+    	final FlexTable flexTable = new FlexTable();
+        final TextBox textNameBox = new TextBox();
+        final TextBox textSexBox = new TextBox();
+        final Label tipLabel = new Label("请输入联系人信息："); 
+        final Grid grid = new Grid(4, 3);
+        final Button addContractButton = new Button("增加联系人");
+        
+        flexTable.setText(0, 0, "姓名");
+        flexTable.setText(0, 1, "性别");
+        flexTable.setText(0, 2, "ID");
+        flexTable.setText(0, 3, "电话");
+        flexTable.setText(0, 4, "删除");
+        flexTable.setStyleName("watchList");
+        flexTable.getCellFormatter().addStyleName(0, 0, "watchListNumericColumn");
+        flexTable.getCellFormatter().addStyleName(0, 1, "watchListNumericColumn");
+        flexTable.getCellFormatter().addStyleName(0, 2, "watchListNumericColumn");
+        flexTable.getCellFormatter().addStyleName(0, 3, "watchListNumericColumn");
+        flexTable.getCellFormatter().addStyleName(0, 4, "watchListRemoveColumn");
 
-        button.addClickHandler(new ClickHandler() {
-            public void onClick(ClickEvent event) {
-                messageEvent.fire(new MessageEvent(message.getText()));
-            }
-        });
 
-        HorizontalPanel horizontalPanel = new HorizontalPanel();
-        horizontalPanel.add(message);
-        horizontalPanel.add(button);
-        horizontalPanel.add(responseLabel);
-
-        RootPanel.get().add(horizontalPanel);
+        //输入框
+        grid.setText(0, 0, "姓：");
+        grid.setText(1, 0, "名：");
+        grid.setWidget(0, 1, textNameBox);
+        grid.setWidget(1, 1, textSexBox);
+        grid.setWidget(1, 2, addContractButton);
+        
+        VerticalPanel verticalMainPanel = new VerticalPanel();
+        verticalMainPanel.add(flexTable);
+        verticalMainPanel.add(tipLabel);
+        verticalMainPanel.add(grid);
+        verticalMainPanel.add(responseLabel);
+        
+        addContractButton.addClickHandler(new ClickHandler() {
+			@Override
+			public void onClick(ClickEvent event) {
+				personVo.setFirstName(textNameBox.getText());
+				personVo.setSecondName(textSexBox.getText());
+				personEvent.fire(personVo);
+			}
+		}); 
+        RootPanel.get().add(verticalMainPanel);
     }
 
     public void response(@Observes ResponseEvent event) {
@@ -72,7 +106,6 @@ public class App {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-    	System.out.println("Message from Server: " + messageString);
         responseLabel.setText("Message from Server: " + messageString);
     }
 }
