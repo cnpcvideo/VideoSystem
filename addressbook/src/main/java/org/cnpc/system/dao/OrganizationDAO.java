@@ -1,6 +1,6 @@
 package org.cnpc.system.dao;
 
-import java.util.Set;
+import java.util.List;
 
 import org.cnpc.system.model.Organization;
 
@@ -14,9 +14,9 @@ public interface OrganizationDAO {
 
 	public Organization findOrganizationById(Long id);
 
-	public Set<Organization> findOrganizationByName(String name) ;
+	public List<Organization> findOrganizationByName(String name) ;
 	
-	public Set<Organization> findAllOrganizations();
+	public List<Organization> findAllOrganizations();
 	
-	public Set<Organization> findOrganizationsByPersonId(Long id);
+	public List<Organization> findOrganizationsByPersonId(Long id);
 }

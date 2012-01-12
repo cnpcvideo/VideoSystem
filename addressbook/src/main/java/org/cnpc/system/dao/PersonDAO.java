@@ -1,6 +1,6 @@
 package org.cnpc.system.dao;
 
-import java.util.Set;
+import java.util.List;
 
 import org.cnpc.system.model.Person;
 
@@ -14,13 +14,13 @@ public interface PersonDAO {
 
 	public Person findPersonById(Long id);
 
-	public Set<Person> findAllPersons();
+	public List<Person> findAllPersons();
 
-	public Set<Person> findPersonsByName(String name);
+	public List<Person> findPersonsByName(String name);
 	
-	public Set<Person> findPersonsByGender(String gender);
+	public List<Person> findPersonsByGender(int gender);
 	
-	public Set<Person> findPersonsByWorkYears(int workYears);
+	public List<Person> findPersonsByWorkYears(int workYears);
 	
-	public Set<Person> findPersonsByOrganizationId(Long organizationId);
+	public List<Person> findPersonsByOrganizationId(Long organizationId);
 }

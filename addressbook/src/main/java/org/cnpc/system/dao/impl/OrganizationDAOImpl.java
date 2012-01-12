@@ -1,6 +1,6 @@
 package org.cnpc.system.dao.impl;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.ejb.Stateless;
 
@@ -32,21 +32,21 @@ public class OrganizationDAOImpl extends BaseDAO implements OrganizationDAO {
 	}
 
 	@Override
-	public Set<Organization> findOrganizationByName(String name) {
-		return (Set<Organization>) this.getEm()
+	public List<Organization> findOrganizationByName(String name) {
+		return (List<Organization>) this.getEm()
 				.createNamedQuery("findOrganizationsByName")
 				.setParameter("name", name).getResultList();
 	}
 
 	@Override
-	public Set<Organization> findAllOrganizations() {
-		return (Set<Organization>) this.getEm()
+	public List<Organization> findAllOrganizations() {
+		return (List<Organization>) this.getEm()
 				.createNamedQuery("findAllOrganizations").getResultList();
 	}
 
 	@Override
-	public Set<Organization> findOrganizationsByPersonId(Long id) {
-		return (Set<Organization>) this.getEm()
+	public List<Organization> findOrganizationsByPersonId(Long id) {
+		return (List<Organization>) this.getEm()
 				.createNamedQuery("findOrganizationsByPersonId")
 				.setParameter("person_id", id).getResultList();
 	}

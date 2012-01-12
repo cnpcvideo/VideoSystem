@@ -1,6 +1,6 @@
 package org.cnpc.system.dao.impl;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.ejb.Stateless;
 
@@ -31,34 +31,34 @@ public class PersonDAOImpl extends BaseDAO implements PersonDAO {
 	}
 
 	@Override
-	public Set<Person> findAllPersons() {
-		return (Set<Person>) this.getEm().createNamedQuery("findAllPersons")
+	public List<Person> findAllPersons() {
+		return (List<Person>) this.getEm().createNamedQuery("findAllPersons")
 				.getResultList();
 	}
 
 	@Override
-	public Set<Person> findPersonsByName(String name) {
-		return (Set<Person>) this.getEm().createNamedQuery("findPersonsByName")
+	public List<Person> findPersonsByName(String name) {
+		return (List<Person>) this.getEm().createNamedQuery("findPersonsByName")
 				.setParameter("name", name).getResultList();
 	}
 
 	@Override
-	public Set<Person> findPersonsByGender(String gender) {
-		return (Set<Person>) this.getEm()
+	public List<Person> findPersonsByGender(int gender) {
+		return (List<Person>) this.getEm()
 				.createNamedQuery("findPersonsByGender")
 				.setParameter("gender", gender).getResultList();
 	}
 
 	@Override
-	public Set<Person> findPersonsByWorkYears(int workYears) {
-		return (Set<Person>) this.getEm()
+	public List<Person> findPersonsByWorkYears(int workYears) {
+		return (List<Person>) this.getEm()
 				.createNamedQuery("findPersonsByWorkYears")
 				.setParameter("workYears", workYears).getResultList();
 	}
 
 	@Override
-	public Set<Person> findPersonsByOrganizationId(Long organizationId) {
-		return (Set<Person>) this.getEm()
+	public List<Person> findPersonsByOrganizationId(Long organizationId) {
+		return (List<Person>) this.getEm()
 				.createNamedQuery("findPersonsByOrganizationId")
 				.setParameter("organization_id", organizationId)
 				.getResultList();
