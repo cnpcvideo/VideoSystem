@@ -22,6 +22,9 @@ import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 
+import org.cnpc.system.client.shared.MessageEvent;
+import org.cnpc.system.client.shared.ResponseEvent;
+import org.cnpc.system.util.ContactUtil;
 import org.jboss.errai.ioc.client.api.EntryPoint;
 
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -32,9 +35,6 @@ import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 
-import org.cnpc.system.client.shared.MessageEvent;
-import org.cnpc.system.client.shared.ResponseEvent;
-
 /**
  * Main application entry point.
  */
@@ -42,6 +42,9 @@ import org.cnpc.system.client.shared.ResponseEvent;
 public class App {
     @Inject
     private Event<MessageEvent> messageEvent;
+    
+    //@Inject
+    //private ContactUtil util; 
 
     private final Label responseLabel = new Label();
 
@@ -65,14 +68,19 @@ public class App {
         RootPanel.get().add(horizontalPanel);
     }
 
-    public void response(@Observes ResponseEvent event) {
-    	String messageString = "";
+    public String encodeMessage(String message){
 		try {
-			messageString = new String(event.getMessage().getBytes("iso8859-1"),"utf-8");
+			return new String(message.getBytes("iso8859-1"),"utf-8");
 		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-    	//System.out.println("Message from Server: " + messageString);
-        responseLabel.setText("Message from Server: " + messageString);
+		
+		return "Encode Wrong";
+	}
+    
+    public void response(@Observes ResponseEvent event) {
+        responseLabel.setText("Message from Server: " + encodeMessage(event.getMessage()));
+    	//responseLabel.setText("Message from Server: " + "sdfsdf");
     }
 }
