@@ -97,8 +97,6 @@ public class App {
     }
 
     public void response(@Observes ResponseEvent event) {
-    	String messageString = "";
-		messageString = event.getMessage();
-        responseLabel.setText("Message from Server: " + messageString);
+        responseLabel.setText("Message from Server: " + event.getMessage());
     }
 }

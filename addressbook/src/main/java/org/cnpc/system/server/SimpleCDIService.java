@@ -37,15 +37,15 @@ public class SimpleCDIService {
     @Inject
     private PersonDAO personDAO;
     
-    public void addPersonHandler(@Observes PersonVo personVo) throws UnsupportedEncodingException {
+    public void addPersonHandler(@Observes PersonVo personVo){
     	Person person = new Person();
-    	String firstNameString = new String(personVo.getFirstName().getBytes("iso8859-1"),"utf-8");
-    	String secondNameString = new String(personVo.getSecondName().getBytes("iso8859-1"),"utf-8");
-    	person.setCurrentFirstName(firstNameString);
-    	person.setCurrentLastName(secondNameString);
-    	System.out.println("Received Message from Client: " + personVo.getFirstName());
+    	String firstName = personVo.getFirstName();//new String(personVo.getFirstName().getBytes("iso8859-1"),"utf-8");
+    	String secondName = personVo.getSecondName();//new String(personVo.getSecondName().getBytes("iso8859-1"),"utf-8");
+    	person.setCurrentFirstName(firstName);
+    	person.setCurrentLastName(secondName);
+    	System.out.println("Received Message from Client: " + personVo.getFirstName() + " " + person.getCurrentLastName());
     	personDAO.savePerson(person);
         
-        responseEvent.fire(new ResponseEvent(personVo.getFirstName() + " @ timemillis: " + System.currentTimeMillis()));
+        responseEvent.fire(new ResponseEvent("成功创建: " + System.currentTimeMillis()));
     }
 }
