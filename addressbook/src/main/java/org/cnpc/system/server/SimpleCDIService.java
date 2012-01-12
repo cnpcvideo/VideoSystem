@@ -15,8 +15,12 @@
  */
 package org.cnpc.system.server;
 
-import java.io.UnsupportedEncodingException;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.cnpc.system.client.shared.MessageEvent;
+import org.cnpc.system.client.shared.PModle;
 import org.cnpc.system.client.shared.PersonVo;
 import org.cnpc.system.client.shared.ResponseEvent;
 import org.cnpc.system.dao.PersonDAO;
@@ -37,6 +41,8 @@ public class SimpleCDIService {
     @Inject
     private PersonDAO personDAO;
     
+    private ResponseEvent respEvent= new ResponseEvent();
+    
     public void addPersonHandler(@Observes PersonVo personVo){
     	Person person = new Person();
     	String firstName = personVo.getFirstName();//new String(personVo.getFirstName().getBytes("iso8859-1"),"utf-8");
@@ -45,7 +51,24 @@ public class SimpleCDIService {
     	person.setCurrentLastName(secondName);
     	System.out.println("Received Message from Client: " + personVo.getFirstName() + " " + person.getCurrentLastName());
     	personDAO.savePerson(person);
-        
-        responseEvent.fire(new ResponseEvent("成功创建: " + System.currentTimeMillis()));
+        PModle pModle1 = new PModle();
+        PModle pModle2 = new PModle();
+        PModle pModle3 = new PModle();
+        ArrayList<PModle> pmodleList = new ArrayList<PModle>();
+        pModle1.setString1("pmodle1");
+        pModle2.setString1("pmodle2");
+        pModle3.setString1("pmodle3");
+        pmodleList.add(pModle1);
+        pmodleList.add(pModle2);
+        pmodleList.add(pModle3);
+        respEvent.setPmodleList(pmodleList);
+        for (int i = 0; i < 2; i++) {
+			
+		}
+        responseEvent.fire(respEvent);
+    }
+    
+    public void deletePersonHandler(@Observes MessageEvent messageEvent){
+
     }
 }

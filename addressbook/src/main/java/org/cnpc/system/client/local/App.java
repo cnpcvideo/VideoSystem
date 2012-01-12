@@ -15,7 +15,6 @@
  */
 package org.cnpc.system.client.local;
 
-import java.io.UnsupportedEncodingException;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.event.Event;
@@ -34,6 +33,7 @@ import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
+import org.cnpc.system.client.shared.MessageEvent;
 import org.cnpc.system.client.shared.PersonVo;
 import org.cnpc.system.client.shared.ResponseEvent;
 
@@ -44,6 +44,8 @@ import org.cnpc.system.client.shared.ResponseEvent;
 public class App {
     @Inject
     private Event<PersonVo> personEvent;
+    @Inject 
+    private Event<MessageEvent> messageEvent;
     
     private PersonVo personVo = new PersonVo();
     
@@ -80,8 +82,8 @@ public class App {
 
 
         //输入框
-        grid.setText(0, 0, "姓：");
-        grid.setText(1, 0, "名：");
+        grid.setText(0, 0, "姓:");
+        grid.setText(1, 0, "名:");
         grid.setWidget(0, 1, textNameBox);
         grid.setWidget(1, 1, textSexBox);
         grid.setWidget(1, 2, addContractButton);
@@ -95,18 +97,7 @@ public class App {
         addContractButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent event) {
-//				addPerson();
-//				personVo.setFirstName(textNameBox.getText());
-//				personVo.setSecondName(textSexBox.getText());
-				personVo.setFirstName(textNameBox.getText());
-		    	personVo.setSecondName(textSexBox.getText());
-		    	int row = flexTable.getRowCount();
-		    	flexTable.setText(row, 0, textNameBox.getText());
-		    	flexTable.setText(row, 1, textSexBox.getText());
-		    	flexTable.setText(row, 2, "000X");
-		    	flexTable.setText(row, 3, "134*********");
-		    	Button deleteButton = new Button("X");
-		    	flexTable.setWidget(row, 4, deleteButton);
+				addPerson();
 				personEvent.fire(personVo);
 			}
 		}); 
@@ -118,14 +109,25 @@ public class App {
     }
     
     private void addPerson() {
-//    	personVo.setFirstName(textNameBox.getText());
-//    	personVo.setSecondName(textSexBox.getText());
-//    	int row = flexTable.getRowCount();
-//    	flexTable.setText(row, 0, textNameBox.getText());
-//    	flexTable.setText(row, 1, textSexBox.getText());
-//    	flexTable.setText(row, 2, "000X");
-//    	flexTable.setText(row, 3, "134*********");
-//    	Button deleteButton = new Button("X");
-//    	flexTable.setWidget(row, 4, deleteButton);
+    	personVo.setFirstName(textNameBox.getText());
+    	personVo.setSecondName(textSexBox.getText());
+    	final int row = flexTable.getRowCount();
+    	flexTable.setText(row, 0, textNameBox.getText());
+    	flexTable.setText(row, 1, textSexBox.getText());
+    	flexTable.setText(row, 2, "000X");
+    	flexTable.setText(row, 3, "134*********");
+    	Button deleteButton = new Button("X");
+    	deleteButton.addStyleDependentName("remove");
+    	
+    	deleteButton.addClickHandler(new ClickHandler() {
+			
+			@Override
+			public void onClick(ClickEvent event) {
+				flexTable.removeRow(row);
+				messageEvent.fire(new MessageEvent(flexTable.getText(row, 0)));
+			}
+		});
+    	
+    	flexTable.setWidget(row, 4, deleteButton);
     }
 }
